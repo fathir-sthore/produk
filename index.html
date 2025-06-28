@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fathir Sthore - Hosting, Panel & Bot WA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo+2:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #0D0D0D;
+            --neon-blue: #00FFFF;
+            --neon-purple: #BB00FF;
+            --neon-pink: #FF00AA;
+            --text-light: #F0F0F0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(187, 0, 255, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 255, 255, 0.05) 0%, transparent 20%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+        
+        .logo span {
+            color: var(--neon-purple);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--neon-blue);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--neon-blue);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle, rgba(187, 0, 255, 0.1) 0%, transparent 70%),
+                radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+            z-index: -1;
+            animation: rotate 30s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(187, 0, 255, 0.3);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-family: 'Exo 2', sans-serif;
+        }
+        
+        .btn-primary {
+            background-color: var(--neon-blue);
+            color: var(--dark-bg);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+        }
+        
+        .btn-secondary {
+            border: 2px solid var(--neon-blue);
+            color: var(--neon-blue);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(0, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
+            color: var(--neon-blue);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: rgba(20, 20, 20, 0.7);
+            border-radius: 10px;
+            padding: 30px;
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.1);
+            border-color: rgba(0, 255, 255, 0.3);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            border-radius: 12px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .feature-card:hover::before {
+            opacity: 0.3;
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--neon-blue);
+        }
+        
+        .feature-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+        }
+        
+        .products-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            background: transparent;
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--neon-blue);
+            color: var(--dark-bg);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: rgba(20, 20, 20, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.1);
+        }
+        
+        .product-image {
+            height: 180px;
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle, rgba(187, 0, 255, 0.1) 0%, transparent 70%),
+                radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        .product-image i {
+            font-size: 60px;
+            color: var(--neon-blue);
+            z-index: 1;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .product-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--neon-blue);
+            margin-bottom: 15px;
+        }
+
+        .price-range {
+            color: var(--neon-blue);
+            font-weight: bold;
+        }
+        
+        .product-desc {
+            margin-bottom: 20px;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+        
+        .btn-buy {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: var(--neon-purple);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-buy:hover {
+            background-color: var(--neon-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Hosting Table */
+        .hosting-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        
+        .hosting-table th, .hosting-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        
+        .hosting-table th {
+            background-color: rgba(0, 255, 255, 0.1);
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .hosting-table tr:hover {
+            background-color: rgba(0, 255, 255, 0.05);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: rgba(20, 20, 20, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 3px solid var(--neon-blue);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--neon-purple);
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .author-info h4 {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        
+        /* Modal Pembayaran */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .modal-content {
+            background-color: var(--dark-bg);
+            margin: 5% auto;
+            padding: 30px;
+            border: 1px solid var(--neon-blue);
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+        }
+        
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            color: var(--neon-blue);
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .payment-method {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 5px;
+        }
+        
+        .payment-method h4 {
+            color: var(--neon-blue);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .qr-code {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .qr-code img {
+            max-width: 200px;
+            border: 1px solid var(--neon-blue);
+            padding: 10px;
+            background: white;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 50px 0 20px;
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 20px;
+            color: var(--neon-blue);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--neon-blue);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--neon-blue);
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--neon-blue);
+            color: var(--dark-bg);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+
+            .hosting-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">digital<span>Sthore</span></div>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#products">Produk</a>
+                    <a href="#features">Fitur</a>
+                    <a href="#testimonials">Testimoni</a>
+                    <a href="#contact">Kontak</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Butuh Hosting, Panel, atau Bot WA?</h1>
+            <p>Solusi lengkap untuk kebutuhan digital Anda dengan performa maksimal dan harga terjangkau.</p>
+            <div class="cta-buttons">
+                <a href="#products" class="btn btn-primary">Mulai Belanja</a>
+                <a href="#features" class="btn btn-secondary">Lihat Paket</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Fitur Unggulan</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Cepat & Stabil</h3>
+                    <p>Hosting dengan server SSD NVMe dan jaringan tier-1 untuk performa maksimal.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Bot WA Siap Pakai</h3>
+                    <p>Script bot WhatsApp dengan fitur lengkap dan mudah diinstall.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3>Harga Terjangkau</h3>
+                    <p>Solusi digital berkualitas dengan harga yang ramah di kantong.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Paket Hosting</h2>
+            
+            <table class="hosting-table">
+                <thead>
+                    <tr>
+                        <th>Paket</th>
+                        <th>Harga</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Hosting 1GB</td>
+                        <td>Rp 1.000/bln</td>
+                        <td><button class="btn-buy" onclick="showPaymentModal('Hosting 1GB', 1000)">Beli</button></td>
+                    </tr>
+                    <tr>
+                        <td>Hosting 2GB</td>
+                        <td>Rp 2.000/bln</td>
+                        <td><button class="btn-buy" onclick="showPaymentModal('Hosting 2GB', 2000)">Beli</button></td>
+                    </tr>
+                    <tr>
+                        <td>Hosting 3GB</td>
+                        <td>Rp 3.000/bln</td>
+                        <td><button class="btn-buy" onclick="showPaymentModal('Hosting 3GB', 3000)">Beli</button></td>
+                    </tr>
+                    <tr>
+                        <td>Hosting 4GB</td>
+                        <td>Rp 4.000/bln</td>
+                        <td><button class="btn-buy" onclick="showPaymentModal('Hosting 4GB', 4000)">Beli</button></td>
+                    </tr>
+                    <tr>
+                        <td>Hosting 5GB</td>
+                        <td>Rp 5.000/bln</td>
+                        <td><button class="btn-buy" onclick="showPaymentModal('Hosting 5GB', 5000)">Beli</button></td>
+                    </tr>
+                    <tr>
+                        <td>Hosting 6GB</td>
+                        <td>Rp 6.000/bln</td>
+                        <td><button class="btn-buy" onclick="showPaymentModal('Hosting 6GB', 6000)">Beli</button></td>
+                    </tr>
+                    <tr>
+                        <td>Hosting 7GB</td>
+                        <td>Rp 7.000/bln</td>
+                        <td><button class="btn-buy" onclick="showPaymentModal('Hosting 7GB', 7000)">Beli</button></td>
+                    </tr>
+                    <tr>
+                        <td>Hosting 8GB</td>
+                        <td>Rp 8.000/bln</td>
+                        <td><button class="btn-buy" onclick="showPaymentModal('Hosting 8GB', 8000)">Beli</button></td>
+                    </tr>
+                    <tr>
+                        <td>Hosting 9GB</td>
+                        <td>Rp 9.000/bln</td>
+                        <td><button class="btn-buy" onclick="showPaymentModal('Hosting 9GB', 9000)">Beli</button></td>
+                    </tr>
+                    <tr>
+                        <td>Hosting 10GB</td>
+                        <td>Rp 10.000/bln</td>
+                        <td><button class="btn-buy" onclick="showPaymentModal('Hosting 10GB', 10000)">Beli</button></td>
+                    </tr>
+                    <tr>
+                        <td>Hosting Unlimited</td>
+                        <td>Rp 12.000/bln</td>
+                        <td><button class="btn-buy" onclick="showPaymentModal('Hosting Unlimited', 12000)">Beli</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2 class="section-title" style="margin-top: 50px;">Script Bot WhatsApp</h2>
+            
+            <div class="products-filter">
+                <button class="filter-btn active">Semua</button>
+                <button class="filter-btn">Bot Bug</button>
+                <button class="filter-btn">Bot MD</button>
+                <button class="filter-btn">Bot Panel</button>
+                <button class="filter-btn">Lainnya</button>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card" data-category="bot-bug">
+                    <div class="product-image">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Script Bot Bug</h3>
+                        <div class="product-price"><span class="price-range">Rp 30.000 - Rp 50.000</span></div>
+                        <p class="product-desc">Script bot WhatsApp dengan fitur-fitur bug terbaru untuk berbagai kebutuhan.</p>
+                        <button class="btn-buy" onclick="showPaymentModal('Script Bot Bug', 30000)">Beli Sekarang</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="bot-md">
+                    <div class="product-image">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Script Bot MD</h3>
+                        <div class="product-price"><span class="price-range">Rp 20.000 - Rp 45.000</span></div>
+                        <p class="product-desc">Multi-device WhatsApp bot dengan fitur lengkap dan mudah diintegrasikan.</p>
+                        <button class="btn-buy" onclick="showPaymentModal('Script Bot MD', 20000)">Beli Sekarang</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="bot-panel">
+                    <div class="product-image">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Script Bot C Panel</h3>
+                        <div class="product-price"><span class="price-range">Rp 15.000 - Rp 30.000</span></div>
+                        <p class="product-desc">Bot WhatsApp dengan kontrol panel untuk manajemen lebih mudah.</p>
+                        <button class="btn-buy" onclick="showPaymentModal('Script Bot C Panel', 15000)">Beli Sekarang</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="lainnya">
+                    <div class="product-image">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Script Bot Store</h3>
+                        <div class="product-price">Rp 25.000</div>
+                        <p class="product-desc">Bot khusus untuk toko online dengan fitur catalog dan pembayaran.</p>
+                        <button class="btn-buy" onclick="showPaymentModal('Script Bot Store', 25000)">Beli Sekarang</button>
+                    </div>
+                </div>
+                <div class="product-card" data-category="lainnya">
+                    <div class="product-image">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Script Bot Push Kontak</h3>
+                        <div class="product-price">Rp 10.000</div>
+                        <p class="product-desc">Bot untuk push kontak secara massal ke banyak nomor sekaligus.</p>
+                        <button class="btn-buy" onclick="showPaymentModal('Script Bot Push Kontak', 10000)">Beli Sekarang</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Apa Kata Mereka?</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Hostingnya kenceng banget, uptime 99.9% beneran. Ga pernah down sama sekali!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>FATHIR STHORE</h4>
+                            <p>Pemilik Toko Online</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Script bot WA nya lengkap banget fiturnya, customer service juga responsif banget."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">S</div>
+                        <div class="author-info">
+                            <h4>VENUSA</h4>
+                            <p>Admin Komunitas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"VPS unlimitednya worth it banget buat kebutuhan client saya. Recommended!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">R</div>
+                        <div class="author-info">
+                            <h4>APHRODITE</h4>
+                            <p>Web Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Modal Pembayaran -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="productTitle" style="color: var(--neon-blue); margin-bottom: 20px;"></h3>
+            <h4 style="margin-bottom: 15px;">Total Pembayaran: <span id="productPrice" style="color: var(--neon-purple);"></span></h4>
+            
+            <div class="payment-method">
+                <h4><i class="fas fa-wallet"></i> DANA</h4>
+                <p>Nomor: <strong>0882003493812</strong></p>
+                <p>Atas Nama: <strong>PATIMAH</strong></p>
+            </div>
+            
+            <div class="payment-method">
+                <h4><i class="fas fa-money-bill-wave"></i> GOPAY</h4>
+                <p>Nomor: <strong>08895668901</strong></p>
+                <p>Atas Nama: <strong>FATIMAH</strong></p>
+            </div>
+            
+            <div class="payment-method">
+                <h4><i class="fas fa-mobile-alt"></i> OVO</h4>
+                <p>Nomor: <strong>0882003493812</strong></p>
+                <p>Atas Nama: <strong>FATHIR</strong></p>
+            </div>
+            
+            <div class="payment-method">
+                <h4><i class="fas fa-qrcode"></i> QRIS</h4>
+                <div class="qr-code">
+                    <img src="https://files.catbox.moe/gwkb7r.jpg" alt="QRIS Payment">
+                </div>
+            </div>
+            
+            <p style="margin-top: 20px; font-weight: bold;">Setelah melakukan pembayaran, segera konfirmasi ke:</p>
+            <ul style="margin: 15px 0 20px 20px;">
+                <li>Admin 1: <a href="https://wa.me/628895668901" style="color: var(--neon-blue);" target="_blank">628895668901</a></li>
+                <li>Admin 2: <a href="https://wa.me/62882003493812" style="color: var(--neon-blue);" target="_blank">62882003493812</a></li>
+                <li>Admin 3: <a href="https://wa.me/6288227759401" style="color: var(--neon-blue);" target="_blank">6288227759401</a></li>
+            </ul>
+            
+            <p>Kirim bukti transfer dan sertakan:</p>
+            <ol style="margin: 10px 0 20px 20px;">
+                <li>Nama produk yang dibeli</li>
+                <li>Nomor WhatsApp aktif Anda</li>
+                <li>Bukti transfer yang jelas</li>
+            </ol>
+            
+            <button class="btn-buy" style="width: 100%;" onclick="closeModal()">Saya Sudah Memahami</button>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>TechNeon</h3>
+                    <p>Solusi lengkap untuk kebutuhan hosting, panel, dan bot WhatsApp dengan performa terbaik.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Produk</h3>
+                    <ul class="footer-links">
+                        <li><a href="#products">Hosting</a></li>
+                        <li><a href="#products">VPS Panel</a></li>
+                        <li><a href="#products">Bot WhatsApp</a></li>
+                        <li><a href="#products">Jasa Website</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Bantuan</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Tutorial</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Kontak</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-envelope"></i> fathirsthore@gmail.com</a></li>
+                        <li><a href="https://wa.me/628895668901"><i class="fab fa-whatsapp"></i> +62 889-5668-901</a></li>
+                        <li><a href="https://t.me/FATHIR06"><i class="fab fa-telegram"></i> @admin_support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Fathir sthore
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Product filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Get filter value
+                const filterValue = button.textContent.toLowerCase();
+                
+                // Filter products
+                productCards.forEach(card => {
+                    const productCategory = card.getAttribute('data-category');
+                    
+                    if (filterValue === 'semua' || 
+                        (filterValue === 'bot bug' && productCategory === 'bot-bug') ||
+                        (filterValue === 'bot md' && productCategory === 'bot-md') ||
+                        (filterValue === 'bot panel' && productCategory === 'bot-panel') ||
+                        (filterValue === 'lainnya' && productCategory === 'lainnya')) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Fungsi untuk menampilkan modal pembayaran
+        function showPaymentModal(productName, productPrice) {
+            document.getElementById('productTitle').textContent = productName;
+            document.getElementById('productPrice').textContent = 'Rp ' + productPrice.toLocaleString('id-ID');
+            document.getElementById('paymentModal').style.display = 'block';
+        }
+        
+        // Fungsi untuk menutup modal
+        function closeModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+        
+        // Tutup modal ketika klik di luar area modal
+        window.onclick = function(event) {
+            const modal = document.getElementById('paymentModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
